@@ -74,7 +74,7 @@
             position: relative;
             width: 100%;
             max-width: 480px;
-            background-color: #000000;
+            background-color: #1a1a1a;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
@@ -215,7 +215,10 @@
         if (currentFilteredFrases.length === 0) {
             stopAnimation();
             if (huellaCounter) huellaCounter.textContent = "Aucune trace dans ce bloc";
-            if (ctx && canvas) ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (ctx && canvas) {
+                ctx.fillStyle = "#111111";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
             return;
         }
 
@@ -250,21 +253,30 @@
         if (prevBtn) prevBtn.disabled = currentIndex === 0;
         if (nextBtn) nextBtn.disabled = currentIndex === currentFilteredFrases.length - 1;
 
-        // CORREGIDO: Usar .jpg en lugar de .png según los archivos subidos al repositorio
         const imgPath = `plantilla${currentBlockNum}_fr.jpg`;
         const videoPath = `plantilla${currentBlockNum}_video_fr.mp4`;
+
+        console.log("Tentative de chargement de l'image:", imgPath);
 
         const bgImg = new Image();
         bgImg.src = imgPath;
 
         bgImg.onload = () => {
+            console.log("Image chargée avec succès:", imgPath);
             adjustCanvasSize(bgImg.naturalWidth, bgImg.naturalHeight);
             drawCanvasFrame(bgImg, item.texto);
             tryLoadVideo(videoPath, item.texto, bgImg);
         };
 
-        bgImg.onerror = () => {
-            drawTextOnly(item.texto);
+        bgImg.onerror = (err) => {
+            console.error("Erreur lors du chargement de l'image de fond:", imgPath, err);
+            // Fallback visual para que no se quede negro
+            adjustCanvasSize(1080, 1350);
+            if (ctx && canvas) {
+                ctx.fillStyle = "#1a1a1a";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+            drawTextOverlay(item.texto);
         };
     }
 
@@ -282,6 +294,7 @@
         video.playsInline = true;
 
         video.onloadeddata = () => {
+            console.log("Vidéo chargée avec succès:", videoSrc);
             currentVideoElem = video;
             if (video.videoWidth && video.videoHeight) {
                 adjustCanvasSize(video.videoWidth, video.videoHeight);
@@ -296,12 +309,14 @@
                     }
                 }
                 loop();
-            }).catch(() => {
+            }).catch((e) => {
+                console.warn("Autoplay bloqué ou erreur vidéo:", e);
                 drawCanvasFrame(fallbackImg, text);
             });
         };
 
         video.onerror = () => {
+            console.log("Vidéo non trouvée ou non supportée, utilisation de l'image fixe:", videoSrc);
             drawCanvasFrame(fallbackImg, text);
         };
     }
@@ -310,13 +325,6 @@
         if (!ctx || !canvas) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height);
-        drawTextOverlay(text);
-    }
-
-    function drawTextOnly(text) {
-        if (!ctx || !canvas) return;
-        adjustCanvasSize(1080, 1350);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawTextOverlay(text);
     }
 
