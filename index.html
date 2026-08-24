@@ -250,7 +250,8 @@
         if (prevBtn) prevBtn.disabled = currentIndex === 0;
         if (nextBtn) nextBtn.disabled = currentIndex === currentFilteredFrases.length - 1;
 
-        const imgPath = `plantilla${currentBlockNum}_fr.png`;
+        // CORREGIDO: Usar .jpg en lugar de .png según los archivos subidos al repositorio
+        const imgPath = `plantilla${currentBlockNum}_fr.jpg`;
         const videoPath = `plantilla${currentBlockNum}_video_fr.mp4`;
 
         const bgImg = new Image();
@@ -259,7 +260,6 @@
         bgImg.onload = () => {
             adjustCanvasSize(bgImg.naturalWidth, bgImg.naturalHeight);
             drawCanvasFrame(bgImg, item.texto);
-            // Intentamos cargar el vídeo por encima; si falla, se mantiene la imagen estática bgImg
             tryLoadVideo(videoPath, item.texto, bgImg);
         };
 
@@ -297,13 +297,11 @@
                 }
                 loop();
             }).catch(() => {
-                // Si el navegador bloquea el autoplay, se queda la imagen estática
                 drawCanvasFrame(fallbackImg, text);
             });
         };
 
         video.onerror = () => {
-            // Si el archivo de vídeo no existe en el repositorio, se muestra la imagen estática correctamente
             drawCanvasFrame(fallbackImg, text);
         };
     }
