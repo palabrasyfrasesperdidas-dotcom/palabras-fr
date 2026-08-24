@@ -183,7 +183,8 @@
             loadingElem.textContent = "Chargement...";
         }
         try {
-            const response = await fetch('frases.json?t=' + Date.now());
+            // Parámetros de versión y timestamp para evitar la caché persistente
+            const response = await fetch('frases.json?v=2.1&t=' + Date.now());
             if (!response.ok) throw new Error("Erreur HTTP " + response.status);
             allFrases = await response.json();
             if (loadingElem) loadingElem.style.display = 'none';
@@ -270,7 +271,6 @@
 
         bgImg.onerror = (err) => {
             console.error("Erreur lors du chargement de l'image de fond:", imgPath, err);
-            // Fallback visual para que no se quede negro
             adjustCanvasSize(1080, 1350);
             if (ctx && canvas) {
                 ctx.fillStyle = "#1a1a1a";
