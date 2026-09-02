@@ -68,15 +68,31 @@
             flex-direction: column;
             align-items: center;
         }
+        .top-menu-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
         .controls {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             justify-content: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             width: 100%;
         }
-        select, button {
+        .interaccion-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        select, button, .btn-accion {
             background-color: #1a1a1a;
             color: #ffffff;
             border: 1px solid #333333;
@@ -86,14 +102,44 @@
             cursor: pointer;
             transition: background-color 0.2s, border-color 0.2s;
             touch-action: manipulation;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-        select:hover, button:hover:not(:disabled) {
+        select:hover, button:hover:not(:disabled), .btn-accion:hover {
             background-color: #2a2a2a;
             border-color: #555555;
         }
         button:disabled {
             opacity: 0.4;
             cursor: not-allowed;
+        }
+        .btn-accion svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+        .btn-accion.activo-huella {
+            border-color: #e67e22;
+            color: #e67e22;
+            background: rgba(230, 126, 34, 0.05);
+        }
+        .btn-accion.activo-rumbo {
+            border-color: #3498db;
+            color: #3498db;
+            background: rgba(52, 152, 219, 0.05);
+        }
+        .btn-libro-papel {
+            border-color: #444444;
+            color: #ffffff;
+            background: #1a1a1a;
+        }
+        .btn-libro-papel:hover {
+            border-color: #d4af37;
+            color: #d4af37;
+            background: #2a2a2a;
         }
         .canvas-container {
             position: relative;
@@ -133,69 +179,6 @@
             display: none;
             z-index: 10;
         }
-
-        /* Top interaction button panel styles */
-        .interaccion-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        .btn-accion {
-            background: #1a1a1a;
-            border: 1px solid #444;
-            color: #bbb;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.25s ease;
-            text-decoration: none;
-        }
-
-        .btn-accion svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-            flex-shrink: 0;
-        }
-
-        .btn-accion:hover {
-            border-color: #d4af37;
-            color: #fff;
-            background: #2a2a2a;
-        }
-
-        .btn-accion.activo-huella {
-            border-color: #e67e22;
-            color: #e67e22;
-            background: rgba(230, 126, 34, 0.05);
-        }
-
-        .btn-accion.activo-rumbo {
-            border-color: #3498db;
-            color: #3498db;
-            background: rgba(52, 152, 219, 0.05);
-        }
-
-        .btn-libro-papel {
-            border-color: #d4af37;
-            color: #d4af37;
-            background: rgba(212, 175, 55, 0.08);
-        }
-
-        .btn-libro-papel:hover {
-            background: rgba(212, 175, 55, 0.2);
-            border-color: #f1c40f;
-            color: #fff;
-        }
     </style>
 </head>
 <body>
@@ -206,8 +189,15 @@
     </header>
 
     <div class="viewer-section">
-        <div class="controls">
+        <!-- Menú superior idéntico al español -->
+        <div class="top-menu-buttons">
             <button id="homeBtn">🏠 Accueil</button>
+            <a href="https://www.amazon.fr/dp/B0FDFG3M5X" target="_blank" rel="noopener noreferrer" class="btn-accion btn-libro-papel">
+                📖 Livre papier
+            </a>
+        </div>
+
+        <div class="controls">
             <select id="blockSelect"></select>
             <button id="prevBtn">&larr; Précédent</button>
             <button id="nextBtn">Suivant &rarr;</button>
@@ -350,18 +340,13 @@
 
         if (botonesAccionContainer) {
             botonesAccionContainer.innerHTML = `
-                <div class="interaccion-container">
-                    <button class="btn-accion" id="btn-huella-${idUnico}" onclick="darHuella('${idUnico}')">
-                        ⭐ Laisser une trace (<span id="count-huella-${idUnico}">0</span>)
-                    </button>
-                    <button class="btn-accion" id="btn-rumbo-${idUnico}" onclick="alternarRumbo('${idUnico}')">
-                        <svg viewBox="0 0 24 24"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
-                        Enregistrer le cap
-                    </button>
-                    <a href="https://www.amazon.fr/dp/B0FDFG3M5X" target="_blank" rel="noopener noreferrer" class="btn-accion btn-libro-papel">
-                        📖 Intéressé par le livre papier ?
-                    </a>
-                </div>
+                <button class="btn-accion" id="btn-huella-${idUnico}" onclick="darHuella('${idUnico}')">
+                    ⭐ Laisser une trace (<span id="count-huella-${idUnico}">0</span>)
+                </button>
+                <button class="btn-accion" id="btn-rumbo-${idUnico}" onclick="alternarRumbo('${idUnico}')">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+                    Enregistrer le cap
+                </button>
             `;
             actualizarEstadoUIInteraccion(idUnico);
         }
