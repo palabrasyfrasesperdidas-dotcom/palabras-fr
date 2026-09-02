@@ -2,13 +2,13 @@
 <html lang="fr">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKWEY6WPF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-9YKWEY6WPF');
-</script>
+      gtag('config', 'G-9YKWEY6WPF');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -137,7 +137,8 @@
         /* Top interaction button panel styles */
         .interaccion-container {
             display: flex;
-            gap: 15px;
+            flex-wrap: wrap;
+            gap: 12px;
             justify-content: center;
             align-items: center;
             width: 100%;
@@ -156,6 +157,7 @@
             align-items: center;
             gap: 8px;
             transition: all 0.25s ease;
+            text-decoration: none;
         }
 
         .btn-accion svg {
@@ -181,6 +183,18 @@
             border-color: #3498db;
             color: #3498db;
             background: rgba(52, 152, 219, 0.05);
+        }
+
+        .btn-libro-papel {
+            border-color: #d4af37;
+            color: #d4af37;
+            background: rgba(212, 175, 55, 0.08);
+        }
+
+        .btn-libro-papel:hover {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: #f1c40f;
+            color: #fff;
         }
     </style>
 </head>
@@ -344,6 +358,9 @@
                         <svg viewBox="0 0 24 24"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
                         Enregistrer le cap
                     </button>
+                    <a href="https://www.amazon.fr/dp/B0FDFG3M5X" target="_blank" rel="noopener noreferrer" class="btn-accion btn-libro-papel">
+                        📖 Intéressé par le livre papier ?
+                    </a>
                 </div>
             `;
             actualizarEstadoUIInteraccion(idUnico);
