@@ -203,10 +203,11 @@
             font-size: 0.8rem;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 5px;
             transition: all 0.25s ease;
             flex: 1;
-            justify-content: center;
+            white-space: nowrap;
         }
 
         .btn-accion svg {
@@ -234,6 +235,57 @@
             background: rgba(52, 152, 219, 0.05);
         }
 
+        /* Estilos para la ventana emergente (modal) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background: #1a1a1a;
+            border: 1px solid #333333;
+            padding: 25px 30px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 320px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+        }
+        .modal-content p {
+            color: #ffffff;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .modal-close-btn {
+            background: #2a2a2a;
+            color: #ffffff;
+            border: 1px solid #555555;
+            padding: 6px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        .modal-close-btn:hover {
+            background: #3a3a3a;
+            border-color: #777777;
+        }
+
         @media (max-width: 580px) {
             h1 { font-size: 1.3rem; }
             select, button { padding: 5px 8px; font-size: 0.75rem; }
@@ -245,9 +297,17 @@
     <!-- Barra de navegación superior alineada simétricamente -->
     <div class="top-navbar">
         <button id="homeBtn" class="btn-navbar">🏠 Accueil</button>
-        <a href="https://www.amazon.fr/s?k=paroles+et+phrases+perdues&i=stripbooks&ref=nb_sb_noss" target="_blank" class="btn-navbar book-nav">
+        <button id="bookBtn" class="btn-navbar book-nav">
             📖 Livre papier
-        </a>
+        </button>
+    </div>
+
+    <!-- Ventana emergente (Modal Prochainement) -->
+    <div id="proximamenteModal" class="modal-overlay">
+        <div class="modal-content">
+            <p>Prochainement</p>
+            <button id="closeModalBtn" class="modal-close-btn">Fermer</button>
+        </div>
     </div>
 
     <header>
@@ -296,7 +356,7 @@
         "Bloc 8 : L'éthique du cœur",
         "Bloc 9 : Le temps qui respire",
         "Bloc 10 : Le jeu de vivre",
-        "Bloc 11 : Le battement de la liberté",
+        "Bloc 11 : Le battement de la libertad",
         "Bloc 12 : L'anatomie de la pensée",
         "Bloc 13 : L'univers des mots",
         "Bloc 14 : La solitude qui parle"
@@ -308,7 +368,7 @@
     let animationFrameId = null;
     let currentVideoElem = null;
 
-    let canvas, ctx, blockSelect, prevBtn, nextBtn, randomBtn, homeBtn, huellaCounter, loadingElem, botonesAccionContainer;
+    let canvas, ctx, blockSelect, prevBtn, nextBtn, randomBtn, homeBtn, bookBtn, closeModalBtn, proximamenteModal, huellaCounter, loadingElem, botonesAccionContainer;
 
     function populateSelect() {
         if (!blockSelect) return;
@@ -604,6 +664,9 @@
         nextBtn = document.getElementById('nextBtn');
         randomBtn = document.getElementById('randomBtn');
         homeBtn = document.getElementById('homeBtn');
+        bookBtn = document.getElementById('bookBtn');
+        proximamenteModal = document.getElementById('proximamenteModal');
+        closeModalBtn = document.getElementById('closeModalBtn');
         huellaCounter = document.getElementById('huellaCounter');
         loadingElem = document.getElementById('loading');
         botonesAccionContainer = document.getElementById('botonesAccionContainer');
@@ -614,6 +677,28 @@
             homeBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 window.location.href = "https://palabrasyfrasesperdidas-dotcom.github.io/palabrasyfrasesperdidas/";
+            });
+        }
+
+        if (bookBtn && proximamenteModal) {
+            bookBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                proximamenteModal.classList.add('active');
+            });
+        }
+
+        if (closeModalBtn && proximamenteModal) {
+            closeModalBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                proximamenteModal.classList.remove('active');
+            });
+        }
+
+        if (proximamenteModal) {
+            proximamenteModal.addEventListener('click', (e) => {
+                if (e.target === proximamenteModal) {
+                    proximamenteModal.classList.remove('active');
+                }
             });
         }
 
