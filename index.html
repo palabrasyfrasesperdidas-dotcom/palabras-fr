@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKWEY6WPF"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9YKWEY6WPF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-      gtag('config', 'G-9YKWEY6WPF');
-    </script>
+  gtag('config', 'G-9YKWEY6WPF');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Paroles et phrases perdues | Collection de traces et réflexions</title>
-    <meta name="description" content="Explorez la collection de traces et de réflexions de Paroles et phrases perdues en français. Parcourez des blocs thématiques dotés d'un design littéraire unique.">
-    <meta name="keywords" content="mots perdus, phrases perdues, littérature, réflexions, cartographie littéraire, français">
+    <!-- SEO & Metadatos Esenciales - Francés -->
+    <title>Paroles et phrases perdues | Collection en Français</title>
+    <meta name="description" content="Explorez en français la collection de traces et de réflexions de Paroles et phrases perdues. Naviguez à travers des blocs thématiques avec un design littéraire unique.">
+    <meta name="keywords" content="paroles perdues, phrases perdues, littérature, réflexions, cartographie littéraire, français">
     
-    <meta property="og:title" content="Paroles et phrases perdues | Collection de traces et réflexions">
-    <meta property="og:description" content="Une collection de traces et de réflexions littéraires organisées par blocs thématiques.">
+    <!-- Open Graph para Redes Sociales -->
+    <meta property="og:title" content="Paroles et phrases perdues | Collection en Français">
+    <meta property="og:description" content="Collection de traces et de réflexions littéraires organisées par blocs thématiques.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://palabrasyfrasesperdidas-dotcom.github.io/palabras-fr/">
     
+    <!-- Enlaces Hreflang para SEO Multilingüe -->
     <link rel="alternate" hreflang="es" href="https://palabrasyfrasesperdidas-dotcom.github.io/palabras-es/">
     <link rel="alternate" hreflang="en" href="https://palabrasyfrasesperdidas-dotcom.github.io/palabras-en/">
     <link rel="alternate" hreflang="ja" href="https://palabrasyfrasesperdidas-dotcom.github.io/palabras-jp/">
     <link rel="alternate" hreflang="fr" href="https://palabrasyfrasesperdidas-dotcom.github.io/palabras-fr/">
     <link rel="alternate" hreflang="de" href="https://palabrasyfrasesperdidas-dotcom.github.io/palabras-al/">
-    <link rel="alternate" hreflang="ar" href="https://palabrasyfrasesperdidas-dotcom.github.io/palabras-ar/">
     <link rel="alternate" hreflang="x-default" href="https://palabrasyfrasesperdidas-dotcom.github.io/palabrasyfrasesperdidas/">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
@@ -44,70 +47,96 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 10px 15px;
         }
+
+        /* Barra de navegación superior alineada estrictamente al bloque central (340px) */
+        .top-navbar {
+            display: flex;
+            width: 100%;
+            max-width: 340px;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .btn-navbar {
+            background-color: #1a1a1a;
+            border: 1px solid #333333;
+            color: #cccccc;
+            padding: 5px 8px;
+            font-size: 0.75rem;
+            border-radius: 6px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            flex: 1;
+        }
+        .btn-navbar:hover {
+            background-color: #2a2a2a;
+            border-color: #555555;
+            color: #ffffff;
+        }
+        .btn-navbar.book-nav:hover {
+            border-color: #436b43;
+            color: #b8f2b8;
+        }
+
         header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             width: 100%;
-            max-width: 900px;
+            max-width: 800px;
         }
         h1 {
-            font-size: 2rem;
-            margin-bottom: 5px;
+            font-size: 1.5rem;
+            margin-bottom: 0;
             color: #e0e0e0;
-        }
-        p.subtitle {
-            font-size: 1rem;
-            color: #888888;
         }
         .viewer-section {
             display: flex;
             width: 100%;
-            max-width: 900px;
+            max-width: 650px;
             flex-direction: column;
             align-items: center;
         }
-        .top-menu-buttons {
+        
+        /* Controles limpios centrados exclusivamente en la lectura */
+        .controls-wrapper {
             display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-bottom: 20px;
+            flex-direction: column;
+            gap: 6px;
             width: 100%;
+            max-width: 340px;
+            margin-bottom: 10px;
         }
-        .controls {
+        .controls-row {
             display: flex;
+            justify-content: center;
+            gap: 6px;
             flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin-bottom: 12px;
             width: 100%;
         }
-        .interaccion-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            margin-bottom: 15px;
-        }
-        select, button, .btn-accion {
+
+        select, button {
             background-color: #1a1a1a;
             color: #ffffff;
             border: 1px solid #333333;
-            padding: 10px 16px;
-            font-size: 0.95rem;
+            padding: 6px 10px;
+            font-size: 0.8rem;
             border-radius: 6px;
             cursor: pointer;
             transition: background-color 0.2s, border-color 0.2s;
             touch-action: manipulation;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
         }
-        select:hover, button:hover:not(:disabled), .btn-accion:hover {
+        select.block-select {
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+        }
+        select:hover, button:hover:not(:disabled) {
             background-color: #2a2a2a;
             border-color: #555555;
         }
@@ -115,40 +144,16 @@
             opacity: 0.4;
             cursor: not-allowed;
         }
-        .btn-accion svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-            flex-shrink: 0;
-        }
-        .btn-accion.activo-huella {
-            border-color: #e67e22;
-            color: #e67e22;
-            background: rgba(230, 126, 34, 0.05);
-        }
-        .btn-accion.activo-rumbo {
-            border-color: #3498db;
-            color: #3498db;
-            background: rgba(52, 152, 219, 0.05);
-        }
-        .btn-libro-papel {
-            border-color: #444444;
-            color: #ffffff;
-            background: #1a1a1a;
-        }
-        .btn-libro-papel:hover {
-            border-color: #d4af37;
-            color: #d4af37;
-            background: #2a2a2a;
-        }
+
+        /* Contenedor del vídeo optimizado a 340px */
         .canvas-container {
             position: relative;
             width: 100%;
-            max-width: 480px;
-            background-color: #1a1a1a;
-            border-radius: 12px;
+            max-width: 340px;
+            background-color: #000000;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.8);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -160,51 +165,111 @@
             display: block;
         }
         .info-panel {
-            margin-top: 15px;
+            margin-top: 8px;
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
-            max-width: 480px;
-            font-size: 0.9rem;
-            color: #aaaaaa;
+            max-width: 340px;
+            font-size: 0.8rem;
+            color: #888888;
         }
         #loading {
             position: absolute;
             color: #ffffff;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             background: rgba(0,0,0,0.7);
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 6px 12px;
+            border-radius: 6px;
             display: none;
             z-index: 10;
+        }
+
+        .interaccion-container {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .btn-accion {
+            background: #1a1a1a;
+            border: 1px solid #444;
+            color: #bbb;
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.25s ease;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .btn-accion svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        .btn-accion:hover {
+            border-color: #d4af37;
+            color: #fff;
+            background: #2a2a2a;
+        }
+
+        .btn-accion.activo-huella {
+            border-color: #e67e22;
+            color: #e67e22;
+            background: rgba(230, 126, 34, 0.05);
+        }
+
+        .btn-accion.activo-rumbo {
+            border-color: #3498db;
+            color: #3498db;
+            background: rgba(52, 152, 219, 0.05);
+        }
+
+        @media (max-width: 580px) {
+            h1 { font-size: 1.3rem; }
+            select, button { padding: 5px 8px; font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Barra de navegación superior alineada simétricamente -->
+    <div class="top-navbar">
+        <button id="homeBtn" class="btn-navbar">🏠 Accueil</button>
+        <a href="https://www.amazon.fr/s?k=paroles+et+phrases+perdues&i=stripbooks&ref=nb_sb_noss" target="_blank" class="btn-navbar book-nav">
+            📖 Livre papier
+        </a>
+    </div>
+
     <header>
         <h1>Paroles et phrases perdues</h1>
-        <p class="subtitle">Collection de traces et de réflexions</p>
     </header>
 
     <div class="viewer-section">
-        <!-- Menú superior idéntico al español -->
-        <div class="top-menu-buttons">
-            <button id="homeBtn">🏠 Accueil</button>
-            <a href="https://www.amazon.fr/dp/B0FDFG3M5X" target="_blank" rel="noopener noreferrer" class="btn-accion btn-libro-papel">
-                📖 Livre papier
-            </a>
+        <!-- Controles limpios -->
+        <div class="controls-wrapper">
+            <!-- Fila 1: Selector de bloques -->
+            <div class="controls-row">
+                <select id="blockSelect" class="block-select"></select>
+            </div>
+            <!-- Fila 2: Anterior, Siguiente y Aleatoria -->
+            <div class="controls-row">
+                <button id="prevBtn">&larr; Précédent</button>
+                <button id="nextBtn">Suivant &rarr;</button>
+                <button id="randomBtn">🎲 Aléatoire</button>
+            </div>
+            <!-- Fila 3: Botones de interacción (Huella, Ruta) -->
+            <div class="controls-row" id="botonesAccionContainer"></div>
         </div>
-
-        <div class="controls">
-            <select id="blockSelect"></select>
-            <button id="prevBtn">&larr; Précédent</button>
-            <button id="nextBtn">Suivant &rarr;</button>
-            <button id="randomBtn">🎲 Aléatoire</button>
-        </div>
-
-        <div id="botonesAccionContainer"></div>
 
         <div class="canvas-container">
             <div id="loading">Chargement...</div>
@@ -232,7 +297,7 @@
         "Bloc 9 : Le temps qui respire",
         "Bloc 10 : Le jeu de vivre",
         "Bloc 11 : Le battement de la liberté",
-        "Bloc 12 : L'anatomie de la pensé",
+        "Bloc 12 : L'anatomie de la pensée",
         "Bloc 13 : L'univers des mots",
         "Bloc 14 : La solitude qui parle"
     ];
@@ -266,17 +331,18 @@
             loadingElem.textContent = "Chargement...";
         }
         try {
-            const response = await fetch('frases.json?v=2.1&t=' + Date.now());
+            const response = await fetch('frases.json?t=' + Date.now());
             if (!response.ok) throw new Error("Erreur HTTP " + response.status);
             allFrases = await response.json();
             if (loadingElem) loadingElem.style.display = 'none';
 
             let activeBlock = sessionStorage.getItem('pyfp_fr_block') || "1";
+            if (Number(activeBlock) > blockNamesFR.length) activeBlock = "1";
             if (blockSelect) blockSelect.value = activeBlock;
 
             filterByBlock(parseInt(activeBlock, 10), true);
         } catch (error) {
-            console.error("Erreur lors du chargement des données:", error);
+            console.error("Erreur lors du chargement des données :", error);
             if (loadingElem) {
                 loadingElem.style.display = 'block';
                 loadingElem.textContent = "Erreur de chargement de frases.json";
@@ -299,10 +365,7 @@
             stopAnimation();
             if (huellaCounter) huellaCounter.textContent = "Aucune trace dans ce bloc";
             if (botonesAccionContainer) botonesAccionContainer.innerHTML = "";
-            if (ctx && canvas) {
-                ctx.fillStyle = "#111111";
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-            }
+            if (ctx && canvas) ctx.clearRect(0, 0, canvas.width, canvas.height);
             return;
         }
 
@@ -340,13 +403,15 @@
 
         if (botonesAccionContainer) {
             botonesAccionContainer.innerHTML = `
-                <button class="btn-accion" id="btn-huella-${idUnico}" onclick="darHuella('${idUnico}')">
-                    ⭐ Laisser une trace (<span id="count-huella-${idUnico}">0</span>)
-                </button>
-                <button class="btn-accion" id="btn-rumbo-${idUnico}" onclick="alternarRumbo('${idUnico}')">
-                    <svg viewBox="0 0 24 24"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
-                    Enregistrer le cap
-                </button>
+                <div class="interaccion-container">
+                    <button class="btn-accion" id="btn-huella-${idUnico}" onclick="darHuella('${idUnico}')">
+                        ⭐ Laisser une trace (<span id="count-huella-${idUnico}">0</span>)
+                    </button>
+                    <button class="btn-accion" id="btn-rumbo-${idUnico}" onclick="alternarRumbo('${idUnico}')">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+                        Enregistrer le cap
+                    </button>
+                </div>
             `;
             actualizarEstadoUIInteraccion(idUnico);
         }
@@ -363,13 +428,8 @@
             tryLoadVideo(videoPath, item.texto, bgImg);
         };
 
-        bgImg.onerror = (err) => {
-            adjustCanvasSize(1080, 1350);
-            if (ctx && canvas) {
-                ctx.fillStyle = "#1a1a1a";
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-            }
-            drawTextOverlay(item.texto);
+        bgImg.onerror = () => {
+            drawTextOnly(item.texto);
         };
     }
 
@@ -395,7 +455,7 @@
                 contadorSpan.textContent = contadores[idUnico] || 0;
             }
         } catch (e) {
-            console.error("Could not load footprints count", e);
+            console.error("Impossible de charger les traces", e);
         }
     }
 
@@ -427,7 +487,7 @@
             if (countSpan) countSpan.textContent = contadores[idUnico];
 
         } catch (e) {
-            console.error("Error registering footprint", e);
+            console.error("Erreur lors de l'enregistrement de la trace", e);
         }
     }
 
@@ -488,6 +548,13 @@
         drawTextOverlay(text);
     }
 
+    function drawTextOnly(text) {
+        if (!ctx || !canvas) return;
+        adjustCanvasSize(1080, 1350);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawTextOverlay(text);
+    }
+
     function drawTextOverlay(text) {
         if (!ctx || !canvas || !text) return;
         ctx.fillStyle = "#ffffff";
@@ -499,9 +566,9 @@
         const x = canvas.width / 2;
         const y = canvas.height * 0.46;
 
-        let fontSize = Math.round(canvas.width * 0.038);
-        if (text.length > 150) fontSize = Math.round(canvas.width * 0.032);
-        if (text.length > 250) fontSize = Math.round(canvas.width * 0.027);
+        let fontSize = Math.round(canvas.width * 0.041);
+        if (text.length > 150) fontSize = Math.round(canvas.width * 0.035);
+        if (text.length > 250) fontSize = Math.round(canvas.width * 0.030);
 
         ctx.font = `400 ${fontSize}px 'Montserrat', sans-serif`;
 
@@ -569,7 +636,7 @@
         if (nextBtn) {
             nextBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                if (currentIndex < currentFilteredFrases.length - 1) {
+                if (currentIndex < currentFilteredFrases.length - 1)  {
                     currentIndex++;
                     renderCurrentHuella();
                 }
@@ -584,6 +651,8 @@
                 const randomItem = allFrases[randomIndex];
                 const blockValue = Number(randomItem.bloque || randomItem.block);
                 
+                if (blockValue > blockNamesFR.length) return;
+
                 blockSelect.value = blockValue.toString();
                 currentFilteredFrases = allFrases.filter(f => Number(f.bloque || f.block) === blockValue);
                 currentIndex = currentFilteredFrases.findIndex(f => f.id === randomItem.id);
